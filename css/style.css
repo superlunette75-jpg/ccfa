@@ -2661,3 +2661,160 @@ footer::before {
     height: 65px;
   }
 }
+
+/* ══════════════════════════════════════════════════════════
+   HERO — Left / Right Arrow Navigation
+══════════════════════════════════════════════════════════ */
+.hero-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,.5);
+  background: rgba(0,0,0,.35);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: var(--white);
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .25s ease, border-color .25s ease, transform .25s ease;
+  /* Hidden on desktop by default – visible on mobile */
+}
+.hero-arrow:hover {
+  background: rgba(232,25,44,.75);
+  border-color: var(--red);
+  transform: translateY(-50%) scale(1.08);
+}
+.hero-arrow-prev { left: 1rem; }
+.hero-arrow-next { right: 1rem; }
+
+/* Show arrows only on mobile / touch devices */
+@media (hover: hover) and (min-width: 769px) {
+  .hero-arrow { opacity: 0; pointer-events: none; }
+  #hero:hover .hero-arrow { opacity: 1; pointer-events: auto; }
+}
+
+/* ══════════════════════════════════════════════════════════
+   INSERTION PROFESSIONNELLE — Section
+══════════════════════════════════════════════════════════ */
+.insertion-section {
+  padding: 7rem 0;
+  background: var(--off-white);
+}
+.insertion-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+.insertion-grid img {
+  width: 100%;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  display: block;
+}
+
+/* ══════════════════════════════════════════════════════════
+   MOBILE-SPECIFIC OVERRIDES (all fixes below)
+══════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+
+  /* ── 1. Hero overlay — lighter so images show through ── */
+  .hero-overlay {
+    background: linear-gradient(
+      to bottom,
+      rgba(0,0,0,.3) 0%,
+      rgba(0,0,0,.05) 45%,
+      rgba(0,0,0,.45) 100%
+    ) !important;
+  }
+
+  /* ── 2. Hero images — ensure full cover, no clipping ── */
+  .hero-slide {
+    background-size: cover !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+  }
+
+  /* ── 3. Hero arrows visible & sized for thumbs on mobile ── */
+  .hero-arrow {
+    width: 44px;
+    height: 44px;
+    font-size: 1rem;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+  .hero-arrow-prev { left: .75rem; }
+  .hero-arrow-next { right: .75rem; }
+
+  /* ── 4. Stats bar — all 4 numbers on ONE row ── */
+  .stats-grid {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    justify-content: space-around !important;
+    align-items: center !important;
+    gap: .25rem !important;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: .5rem 0;
+  }
+  .stat-item {
+    flex: 1 1 0;
+    min-width: 0;
+    text-align: center;
+    padding: 0 .25rem;
+  }
+  .stat-number {
+    font-size: clamp(1.3rem, 5vw, 2rem) !important;
+    white-space: nowrap;
+  }
+  .stat-desc {
+    font-size: clamp(.6rem, 2.5vw, .78rem) !important;
+    line-height: 1.3;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* ── 5. Insertion section — stack on mobile ── */
+  .insertion-section { padding: 3.5rem 0; }
+  .insertion-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+  .insertion-grid img {
+    border-radius: var(--radius-md);
+    max-height: 280px;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  /* ── 6. Image loading / rendering optimizations ── */
+  .hero-slide {
+    /* Pre-paint the background so it's ready when JS swaps */
+    will-change: opacity;
+    contain: strict;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Extra small — tighten stats further */
+  .stat-number { font-size: clamp(1.1rem, 5vw, 1.5rem) !important; }
+  .stat-desc   { font-size: .58rem !important; }
+
+  /* Hero arrows smaller */
+  .hero-arrow { width: 38px; height: 38px; font-size: .9rem; }
+  .hero-arrow-prev { left: .5rem; }
+  .hero-arrow-next { right: .5rem; }
+
+  /* Insertion image */
+  .insertion-grid img { max-height: 220px; }
+}
+

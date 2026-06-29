@@ -172,14 +172,33 @@ const clamp = (val, min, max) => Math.min(Math.max(val, min), max);
   }
 
   function start() { interval = setInterval(() => goTo(current + 1), 6000); }
+  function restart() { clearInterval(interval); start(); }
 
   slides[0].classList.add('active');
   dots[0]?.classList.add('active');
   start();
 
+  // Dot clicks
   dots.forEach((dot, i) => dot.addEventListener('click', () => {
-    clearInterval(interval); goTo(i); start();
+    goTo(i); restart();
   }));
+
+  // Arrow buttons
+  const prevBtn = document.getElementById('hero-prev');
+  const nextBtn = document.getElementById('hero-next');
+  if (prevBtn) prevBtn.addEventListener('click', () => { goTo(current - 1); restart(); });
+  if (nextBtn) nextBtn.addEventListener('click', () => { goTo(current + 1); restart(); });
+
+  // Touch swipe support
+  let touchStartX = 0;
+  const hero = document.getElementById('hero');
+  if (hero) {
+    hero.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
+    hero.addEventListener('touchend', e => {
+      const dx = e.changedTouches[0].screenX - touchStartX;
+      if (Math.abs(dx) > 40) { goTo(dx < 0 ? current + 1 : current - 1); restart(); }
+    }, { passive: true });
+  }
 })();
 
 

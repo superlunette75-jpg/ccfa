@@ -184,8 +184,6 @@ ul { list-style: none; }
   width: 52px;
   height: 52px;
   object-fit: contain;
-  border-radius: 50%;
-  background: var(--white);
   flex-shrink: 0;
   transition: transform var(--transition);
 }
@@ -195,8 +193,6 @@ ul { list-style: none; }
   width: 52px;
   height: 52px;
   object-fit: contain;
-  border-radius: 50%;
-  background: rgba(255,255,255,.12);
   flex-shrink: 0;
 }
 .logo-text {
@@ -301,13 +297,9 @@ ul { list-style: none; }
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to right,
-    rgba(0,22,70,.82) 0%,
-    rgba(0,22,70,.52) 50%,
-    rgba(0,22,70,.2) 100%
-  );
-  z-index: 1;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, transparent 20%, transparent 100%);
+  z-index: 2;
+  pointer-events: none;
 }
 .hero-content {
   position: relative;
@@ -2122,8 +2114,6 @@ body.cursor-click #cursor-dot {
 .preloader-logo {
   width: 90px; height: 90px;
   object-fit: contain;
-  border-radius: 50%;
-  background: rgba(255,255,255,.08);
   padding: 8px;
   animation: preloaderSpin 3s linear infinite;
 }

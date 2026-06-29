@@ -14,32 +14,14 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" />
   <link rel="stylesheet" href="css/style.css" />
   <!-- Font Awesome for icons -->
-  <!-- Google Translate -->
-  <script type="text/javascript">
-    function googleTranslateElementInit() {
-      new google.translate.TranslateElement({
-        pageLanguage: 'fr',
-        includedLanguages: 'en,fr',
-        layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-        autoDisplay: false
-      }, 'google_translate_element');
-    }
-  </script>
-  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-  <style>
-    /* Hide Google's default toolbar banner */
-    .goog-te-banner-frame, .skiptranslate { display: none !important; }
-    body { top: 0 !important; }
-    .goog-te-gadget { font-size: 0 !important; }
-    .goog-te-gadget .goog-te-combo { display: none; }
-    #goog-gt-tt, .goog-te-balloon-frame { display: none !important; }
-    .goog-text-highlight { background: none !important; box-shadow: none !important; }
-  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <!-- GTranslate -->
+  <div class="gtranslate_wrapper"></div>
+  <script>window.gtranslateSettings = {"default_language":"fr","native_language_names":true,"detect_browser_language":true,"languages":["fr","en","ar"],"wrapper_selector":".gtranslate_wrapper","switcher_horizontal_position":"right","switcher_vertical_position":"top"}</script>
+  <script src="https://cdn.gtranslate.net/widgets/latest/dwf.js" defer></script>
 </head>
 <body>
 
-<!-- Google Translate hidden element -->
-<div id="google_translate_element" style="display:none;"></div>
 
 <!-- Scroll Progress Bar -->
 <div id="scroll-progress" aria-hidden="true"></div>
@@ -100,12 +82,6 @@
 
       <!-- CTA -->
       <div class="nav-cta">
-        <!-- Language Toggle -->
-        <button id="lang-toggle" aria-label="Traduire en anglais" title="Translate to English">
-          <span id="lang-fr" class="lang-option active">FR</span>
-          <span class="lang-sep">|</span>
-          <span id="lang-en" class="lang-option">EN</span>
-        </button>
         <a href="#contact" class="btn btn-primary" id="nav-cta-inscriptions">
           <i class="fa-solid fa-paper-plane"></i> S'inscrire
         </a>

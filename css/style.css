@@ -1542,12 +1542,12 @@ ul { list-style: none; }
   cursor: pointer;
 }
 
+
 /* ═══════════════════════════════════════════════════════════
    RESPONSIVE
 ═══════════════════════════════════════════════════════════ */
-/* ══════════════════════════════════════════════════════════
-   RESPONSIVE — Tablet 1024px
-══════════════════════════════════════════════════════════ */
+
+/* ── Tablet 1024px ───────────────────────────────────────── */
 @media (max-width: 1024px) {
   .stats-grid         { grid-template-columns: repeat(2, 1fr); }
   .quality-grid       { grid-template-columns: repeat(3, 1fr); }
@@ -1559,16 +1559,22 @@ ul { list-style: none; }
   .careers-grid       { grid-template-columns: repeat(2, 1fr); }
 }
 
-/* ══════════════════════════════════════════════════════════
-   RESPONSIVE — Mobile 768px
-══════════════════════════════════════════════════════════ */
+/* ── Mobile 768px ────────────────────────────────────────── */
 @media (max-width: 768px) {
-  /* Nav */
+
+  /* ── Navbar ── */
   .nav-links, .nav-cta { display: none; }
   .hamburger { display: flex; }
+  #navbar { padding: .75rem 0; }
+  .nav-logo-img { width: 42px; height: 42px; }
+  .logo-name { font-size: 1rem; }
+  .logo-tagline { font-size: .6rem; }
 
-  /* Hero — recentre background images for portrait phones */
-  #hero { min-height: 100svh; }
+  /* ── Hero ── */
+  #hero {
+    min-height: 100svh;
+    min-height: 100vh; /* fallback */
+  }
   .hero-slide {
     background-position: center center;
     background-size: cover;
@@ -1576,32 +1582,27 @@ ul { list-style: none; }
   .hero-overlay {
     background: linear-gradient(
       to bottom,
-      rgba(0,22,70,.75) 0%,
-      rgba(0,22,70,.65) 60%,
-      rgba(0,22,70,.85) 100%
+      rgba(0,0,0,.55) 0%,
+      rgba(0,0,0,.2) 40%,
+      rgba(0,0,0,.6) 100%
     );
   }
   .hero-content {
-    padding: 7rem 0 3rem;
+    padding: 6rem 0 3rem;
     max-width: 100%;
     text-align: center;
   }
   .hero-title {
-    font-size: clamp(2rem, 8vw, 2.8rem);
+    font-size: clamp(1.9rem, 7.5vw, 2.8rem);
     line-height: 1.15;
   }
   .hero-subtitle {
-    font-size: .97rem;
+    font-size: .95rem;
     margin-bottom: 1.5rem;
+    color: rgba(255,255,255,.9);
   }
-  .hero-actions {
-    justify-content: center;
-    gap: .75rem;
-  }
-  .hero-actions .btn {
-    padding: .75rem 1.5rem;
-    font-size: .88rem;
-  }
+  .hero-actions { justify-content: center; gap: .75rem; flex-wrap: wrap; }
+  .hero-actions .btn { padding: .75rem 1.5rem; font-size: .88rem; }
   .hero-stats {
     justify-content: center;
     flex-wrap: wrap;
@@ -1615,7 +1616,119 @@ ul { list-style: none; }
   .slide-dots { display: none; }
   .hero-scroll-indicator { display: none; }
 
-  /* Partners section */
+  /* ── Section spacing ── */
+  #about, #president, #vision, #programs, #careers,
+  #pedagogy, #quality, #events, #gallery, #internships,
+  #insertion, #why, #location, #contact {
+    padding: 3.5rem 0;
+  }
+  #stats-bar { padding: 2rem 0; }
+
+  /* ── Section typography ── */
+  .section-label { font-size: .7rem; }
+  .section-title { font-size: clamp(1.6rem, 6vw, 2.4rem); line-height: 1.15; }
+  .section-subtitle { font-size: .92rem; line-height: 1.65; }
+
+  /* ── Stats ── */
+  .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+  .stat-number { font-size: 2rem; }
+  .stat-desc { font-size: .78rem; }
+
+  /* ── Grids → single column ── */
+  .about-grid,
+  .president-inner,
+  .vision-grid,
+  .pedagogy-grid,
+  .events-grid,
+  .location-grid,
+  .contact-inner {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .programs-grid    { grid-template-columns: 1fr; }
+  .careers-grid     { grid-template-columns: 1fr; }
+  .internships-grid { grid-template-columns: 1fr; }
+
+  /* ── About section ── */
+  .about-image-wrap { max-width: 90%; margin: 0 auto; }
+  .about-image-accent { display: none; }
+  .about-image-main {
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    border-radius: var(--radius-md);
+  }
+  .about-badge {
+    left: .75rem;
+    top: .75rem;
+    padding: .6rem .9rem;
+    font-size: .75rem;
+  }
+  .about-badge-num { font-size: 1.3rem; }
+  .about-content { padding-left: 0; text-align: center; }
+  .about-features { align-items: flex-start; }
+  .about-feature { text-align: left; }
+
+  /* ── President ── */
+  .president-card { max-width: 260px; margin: 0 auto; }
+  .president-photo { aspect-ratio: 1; }
+  .president-quote { font-size: 1rem; }
+
+  /* ── Vision ── */
+  .vision-image { max-width: 80%; margin: 0 auto; }
+  .vision-pillars { grid-template-columns: 1fr 1fr; gap: .75rem; }
+  .vision-pillar { padding: 1rem; }
+  .pillar-icon { font-size: 1.4rem; }
+  .pillar-title { font-size: .88rem; }
+  .pillar-desc { font-size: .78rem; }
+
+  /* ── Programs ── */
+  .programs-header { text-align: center; }
+  .prog-tabs { flex-wrap: wrap; gap: .5rem; justify-content: center; }
+  .prog-tab { font-size: .8rem; padding: .45rem 1rem; }
+  .program-image { aspect-ratio: 16/9; }
+  .program-body { padding: 1.2rem; }
+  .program-title { font-size: 1.1rem; }
+
+  /* ── Careers ── */
+  .career-image { aspect-ratio: 16/9; }
+
+  /* ── Pedagogy ── */
+  .pedagogy-media img,
+  .pedagogy-media video {
+    border-radius: var(--radius-md);
+    aspect-ratio: 16/9;
+    width: 100%;
+    object-fit: cover;
+  }
+  .ped-steps { gap: 1rem; }
+
+  /* ── Quality grid ── */
+  .quality-grid { grid-template-columns: repeat(2, 1fr); gap: .75rem; }
+  .quality-card { padding: 1.2rem 1rem; }
+  .quality-num { width: 38px; height: 38px; font-size: .8rem; }
+  .quality-title { font-size: .78rem; }
+
+  /* ── Why grid ── */
+  .why-grid { grid-template-columns: repeat(2, 1fr); gap: .75rem; }
+  .why-card { padding: 1.4rem 1rem; }
+  .why-icon { font-size: 1.6rem; }
+  .why-num { font-size: 1.3rem; }
+  .why-text { font-size: .78rem; }
+
+  /* ── Events ── */
+  .events-gallery { height: 200px; gap: .4rem; }
+  .event-img { border-radius: var(--radius-sm); }
+  .events-tags { gap: .4rem; }
+  .event-tag { font-size: .72rem; padding: .3rem .7rem; }
+
+  /* ── Internships ── */
+  .internship-card { padding: 1.2rem; }
+
+  /* ── Gallery ── */
+  .gallery-masonry { columns: 2; gap: .5rem; }
+  .gallery-item { margin-bottom: .5rem; }
+
+  /* ── Partners ── */
   .partners-top {
     grid-template-columns: 1fr;
     padding: 2.5rem 5vw 2rem;
@@ -1623,164 +1736,129 @@ ul { list-style: none; }
     text-align: center;
   }
   .partners-eyebrow { margin: 0 auto 1rem; }
-  .partners-headline { font-size: clamp(1.4rem, 5vw, 2rem); }
-  .partners-trust-nums {
-    justify-content: center;
-    gap: 1.2rem;
-    flex-wrap: wrap;
-  }
+  .partners-headline { font-size: clamp(1.3rem, 5vw, 1.9rem); }
+  .partners-lead { font-size: .88rem; }
+  .partners-trust-nums { justify-content: center; gap: 1.2rem; flex-wrap: wrap; }
   .trust-num-divider { display: none; }
   .trust-num-val { font-size: 1.8rem; }
   .partners-strip { padding-bottom: 2rem; }
-  .partner-logo {
-    min-width: 110px;
-    height: 66px;
-    padding: .7rem 1rem;
-  }
-  .partner-logo img {
-    max-height: 42px;
-    max-width: 100px;
-  }
+  .partner-logo { min-width: 110px; height: 66px; padding: .7rem 1rem; }
+  .partner-logo img { max-height: 42px; max-width: 100px; }
   .partners-track { animation-duration: 28s; gap: 1rem; }
 
-  /* Sections — reduce padding */
-  #about, #president, #vision, #programs, #careers,
-  #pedagogy, #quality, #events, #gallery, #internships,
-  #insertion, #why, #location, #contact {
-    padding: 4rem 0;
-  }
-  #stats-bar { padding: 2rem 0; }
-  .stats-grid { grid-template-columns: repeat(2, 1fr); }
-  .stat-number { font-size: 2rem; }
-
-  /* Grids → single column */
-  .about-grid,
-  .president-inner,
-  .vision-grid,
-  .pedagogy-grid,
-  .events-grid,
-  .location-grid,
-  .contact-inner { grid-template-columns: 1fr; gap: 2rem; }
-
-  .programs-grid    { grid-template-columns: 1fr; }
-  .careers-grid     { grid-template-columns: 1fr; }
-  .internships-grid { grid-template-columns: 1fr; }
-
-  /* About image */
-  .about-image-wrap { max-width: 85%; margin: 0 auto; }
-  .about-image-accent { display: none; }
-  .about-image-main { aspect-ratio: 16/9; }
-  .about-badge { left: .5rem; top: 1rem; }
-  .about-content { padding-left: 0; text-align: center; }
-  .about-features { align-items: flex-start; }
-
-  /* President */
-  .president-card { max-width: 280px; margin: 0 auto; }
-  .president-photo { aspect-ratio: 1; }
-
-  /* Vision */
-  .vision-grid .order-swap { order: -1; }
-  .vision-pillars { grid-template-columns: 1fr 1fr; gap: .75rem; }
-  .vision-pillar { padding: 1.2rem; }
-
-  /* Programs */
-  .prog-tabs { flex-wrap: wrap; gap: .5rem; justify-content: center; }
-  .prog-tab { font-size: .82rem; padding: .45rem 1rem; }
-  .program-card-img { aspect-ratio: 16/9; }
-
-  /* Pedagogy */
-  .pedagogy-media img,
-  .pedagogy-media video { border-radius: var(--radius-md); aspect-ratio: 16/9; width: 100%; object-fit: cover; }
-
-  /* Gallery */
-  .gallery-masonry { columns: 2; gap: .6rem; }
-  .gallery-item { margin-bottom: .6rem; break-inside: avoid; }
-
-  /* Quality */
-  .quality-grid { grid-template-columns: repeat(2, 1fr); }
-
-  /* Why grid */
-  .why-grid { grid-template-columns: repeat(2, 1fr); }
-
-  /* Events gallery */
-  .events-gallery { height: 220px; }
-
-  /* Section titles */
-  .section-title { font-size: clamp(1.7rem, 6vw, 2.4rem); }
-  .section-subtitle { font-size: .95rem; }
-
-  /* Forms */
-  .form-row { grid-template-columns: 1fr; }
+  /* ── Contact / Form ── */
+  .contact-inner { gap: 2rem; }
   .contact-form-wrap { padding: 1.5rem; }
+  .form-row { grid-template-columns: 1fr; gap: 1rem; }
+  .form-input, .form-textarea, .form-select {
+    font-size: 16px; /* prevents iOS zoom on focus */
+    padding: .75rem 1rem;
+  }
+  .btn-submit { width: 100%; justify-content: center; font-size: .9rem; }
 
-  /* Footer */
+  /* ── Location / Map ── */
+  .map-frame { height: 240px; }
+
+  /* ── Footer ── */
   .footer-grid { grid-template-columns: 1fr; gap: 1.5rem; }
   .footer-bottom { flex-direction: column; gap: .5rem; text-align: center; }
   .footer-desc { max-width: 100%; }
+  .footer-logo-img { width: 44px; height: 44px; }
+  .footer-link-group h4 { font-size: .88rem; }
+  .footer-link-group a { font-size: .82rem; }
 
-  /* Map */
-  .map-frame { height: 260px; }
+  /* ── Back to top ── */
+  #back-to-top {
+    bottom: 1.25rem;
+    right: 1.25rem;
+    width: 42px;
+    height: 42px;
+    font-size: 1rem;
+  }
 
-  /* Back to top */
-  #back-to-top { bottom: 1.25rem; right: 1.25rem; width: 42px; height: 42px; font-size: 1rem; }
+  /* ── Floating badge ── */
+  .floating-badge {
+    bottom: 1.25rem;
+    left: 1.25rem;
+    width: 62px;
+    height: 62px;
+  }
+
+  /* ── Mobile nav overlay ── */
+  .mobile-nav { gap: 1.5rem; }
+  .mobile-nav a { font-size: 1.5rem; letter-spacing: .04em; }
+  .mobile-nav-close { font-size: 1.6rem; }
 }
 
-/* ══════════════════════════════════════════════════════════
-   RESPONSIVE — Small phones 480px
-══════════════════════════════════════════════════════════ */
+/* ── Small phones 480px ──────────────────────────────────── */
 @media (max-width: 480px) {
-  /* Hero background — face/subject tends to be center-top */
-  .hero-slide { background-position: center 20%; }
-  .hero-title  { font-size: clamp(1.75rem, 7.5vw, 2.2rem); }
-  .hero-stats  { gap: 1rem; }
+  /* Hero */
+  .hero-slide { background-position: center 25%; }
+  .hero-title { font-size: clamp(1.7rem, 7.5vw, 2.2rem); }
+  .hero-stats { gap: 1rem; }
   .hero-stat-num { font-size: 1.4rem; }
+  .hero-actions { flex-direction: column; align-items: center; }
+  .hero-actions .btn { width: 100%; justify-content: center; max-width: 300px; }
 
-  /* Gallery: single column on very small phones */
-  .gallery-masonry { columns: 1; gap: .5rem; }
+  /* Container */
+  .container { width: 94%; }
 
-  /* Sections */
+  /* Grids */
   .quality-grid { grid-template-columns: 1fr 1fr; }
   .why-grid     { grid-template-columns: 1fr 1fr; }
   .vision-pillars { grid-template-columns: 1fr 1fr; }
   .stats-grid   { grid-template-columns: 1fr 1fr; }
-  .stat-number  { font-size: 1.8rem; }
+  .stat-number  { font-size: 1.7rem; }
+
+  /* Gallery: single column */
+  .gallery-masonry { columns: 1; gap: .5rem; }
 
   /* Partners */
   .partner-logo { min-width: 95px; height: 58px; padding: .55rem .8rem; }
   .partner-logo img { max-height: 36px; max-width: 86px; }
   .partners-track { animation-duration: 22s; }
 
-  /* Container padding */
-  .container { width: 94%; }
-
-  /* Buttons full-width on tiny screens */
-  .hero-actions { flex-direction: column; align-items: center; }
-  .hero-actions .btn { width: 100%; justify-content: center; max-width: 280px; }
-
-  /* Programs/careers card */
+  /* Cards */
   .program-card, .career-card { border-radius: var(--radius-md); }
+  .why-card { padding: 1.1rem .8rem; }
+  .quality-card { padding: 1rem .8rem; }
 
-  /* Section titles */
-  .section-title { font-size: clamp(1.5rem, 6.5vw, 2rem); }
+  /* Typography */
+  .section-title { font-size: clamp(1.45rem, 6.5vw, 1.9rem); }
+  .section-subtitle { font-size: .88rem; }
 
-  /* Preloader text */
-  .preloader-text { font-size: 1.6rem; }
-  .preloader-logo { width: 72px; height: 72px; }
+  /* Preloader */
+  .preloader-text { font-size: 1.5rem; }
+  .preloader-logo { width: 70px; height: 70px; }
 
-  /* Mobile nav links */
+  /* Mobile nav */
   .mobile-nav a { font-size: 1.3rem; }
+
+  /* Events */
+  .events-gallery { height: 170px; }
+
+  /* Pedagogy steps */
+  .ped-step { flex-direction: column; gap: .5rem; }
+  .step-number { align-self: flex-start; }
+
+  /* Form */
+  .contact-form-wrap { padding: 1.25rem; border-radius: var(--radius-md); }
 }
 
-/* ══════════════════════════════════════════════════════════
-   RESPONSIVE — Very small 360px
-══════════════════════════════════════════════════════════ */
+/* ── Very small phones 360px ─────────────────────────────── */
 @media (max-width: 360px) {
-  .hero-title { font-size: 1.6rem; }
-  .trust-num-val { font-size: 1.5rem; }
+  .hero-title { font-size: 1.5rem; }
+  .hero-stat-num { font-size: 1.25rem; }
+  .trust-num-val { font-size: 1.4rem; }
   .partner-logo { min-width: 82px; height: 52px; }
   .partner-logo img { max-height: 30px; }
   .partners-track { animation-duration: 18s; }
+  .why-card { padding: .9rem .7rem; }
+  .quality-card { padding: .9rem .7rem; }
+  .section-title { font-size: 1.4rem; }
+  .container { width: 96%; }
 }
+
 /* ══════════════════════════════════════════════════════════
    PARTNERS — prominent 2nd section
 ══════════════════════════════════════════════════════════ */

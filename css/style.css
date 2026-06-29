@@ -1738,32 +1738,9 @@ ul { list-style: none; }
   .partners-eyebrow { margin: 0 auto 1rem; }
   .partners-headline { font-size: clamp(1.3rem, 5vw, 1.9rem); }
   .partners-lead { font-size: .88rem; }
-  .partners-trust-nums {
-    display: flex !important;
-    flex-direction: row !important;
-    flex-wrap: nowrap !important;
-    justify-content: center;
-    align-items: center;
-    gap: 0;
-    width: 100%;
-  }
-  .trust-num {
-    flex: 1 1 0;
-    min-width: 0;
-    text-align: center;
-    padding: 0 .5rem;
-    border-right: 1px solid rgba(255,255,255,.15);
-  }
-  .trust-num:last-child { border-right: none; }
+  .partners-trust-nums { justify-content: center; gap: 1.2rem; flex-wrap: wrap; }
   .trust-num-divider { display: none; }
-  .trust-num-val {
-    font-size: clamp(1.2rem, 5vw, 1.8rem);
-    white-space: nowrap;
-  }
-  .trust-num-label {
-    font-size: clamp(.58rem, 2vw, .72rem);
-    white-space: nowrap;
-  }
+  .trust-num-val { font-size: 1.8rem; }
   .partners-strip { padding-bottom: 2rem; }
   .partner-logo { min-width: 110px; height: 66px; padding: .7rem 1rem; }
   .partner-logo img { max-height: 42px; max-width: 100px; }
@@ -2776,35 +2753,6 @@ footer::before {
   .hero-arrow-prev { left: .75rem; }
   .hero-arrow-next { right: .75rem; }
 
-  /* ── 4. Stats bar — all 4 numbers on ONE row ── */
-  .stats-grid {
-    display: flex !important;
-    flex-direction: row !important;
-    flex-wrap: nowrap !important;
-    justify-content: space-around !important;
-    align-items: center !important;
-    gap: .25rem !important;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    padding: .5rem 0;
-  }
-  .stat-item {
-    flex: 1 1 0;
-    min-width: 0;
-    text-align: center;
-    padding: 0 .25rem;
-  }
-  .stat-number {
-    font-size: clamp(1.3rem, 5vw, 2rem) !important;
-    white-space: nowrap;
-  }
-  .stat-desc {
-    font-size: clamp(.6rem, 2.5vw, .78rem) !important;
-    line-height: 1.3;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
 
   /* ── 5. Insertion section — stack on mobile ── */
   .insertion-section { padding: 3.5rem 0; }
@@ -2828,9 +2776,6 @@ footer::before {
 }
 
 @media (max-width: 480px) {
-  /* Extra small — tighten stats further */
-  .stat-number { font-size: clamp(1.1rem, 5vw, 1.5rem) !important; }
-  .stat-desc   { font-size: .58rem !important; }
 
   /* Hero arrows smaller */
   .hero-arrow { width: 38px; height: 38px; font-size: .9rem; }
